@@ -99,9 +99,7 @@ And then navigating to localhost:8080
 
 ## tests
 
-Tests exist for the entire flask codebase (models and controllers) using test classes provided by Flask-Testing. The code has 100% test coverage.
-
-Th entire flask codebase (models and controllers) has 100% test coverage using test classes provided by the Flask-Testing plugin
+The entire flask codebase (models and controllers) has 100% test coverage using test classes provided by the Flask-Testing plugin
 
 The zmq pub/sub (ie the wsgi wrapper) requires tests...
 
