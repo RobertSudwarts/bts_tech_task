@@ -72,7 +72,7 @@ I have used a bootstrap theme (courtesy of [bootswatch](https://bootswatch.com/)
 
 *Incidentally, I was going to incorporate your logo in my application but, for reasons of copyright infringement etc, I restrained myself(!)*
 
-## intallation
+## installation
 
 ```bash
 $ git clone https://github.com/RobertSudwarts/bts_tech_task
