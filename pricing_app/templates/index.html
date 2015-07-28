@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{%- block title %}BATS Chi-X{%- endblock -%}
+
+{%- block header_script %}
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css') }}">
+
+  <style type="text/css">
+    #sid { font-size: 10px; }
+    /* constrain table width */
+    div#pxTable_wrapper {width:350px;}
+
+    /* misc table styles */
+    table tbody td.crdr {text-align: right;}
+    td { font-size: 12px; }
+  </style>
+{% endblock %}
+
+{% import 'dummy_panel.html' as dummy_p %}
+
+{% block content %}
+
+<div class="row" style="margin-top: 15px;">
+{{ dummy_p }}
+{{ dummy_p }}
+{{ dummy_p }}
+</div> <!-- end row -->
+
+<div class="row">
+
+  {{ dummy_p }}
+
+  <div class="col-md-4">
+
+    <span id="connection_status" class="label label-warning"></span>
+    <span id="sid"></span>
+
+    <table class="table table-condensed dataTable" id="pxTable">
+      <thead>
+          <tr>
+            <th>code</th>
+            <th>price</th>
+            <th>ccy</th>
+          </tr>
+      </thead>
+      <tbody> </tbody>
+    </table>
+
+  </div> <!-- end col -->
+
+  {{ dummy_p }}
+
+</div> <!-- end row -->
+
+{% endblock %}
+
+{%- block tail_script %}
+<script src="{{url_for('static', filename='bower_components/DataTables/media/js/jquery.dataTables.min.js')}}"></script>
+<script src="{{url_for('static', filename='bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js')}}"></script>
+<script src="{{url_for('static', filename='bower_components/jquery-color-animation/jquery.animate-colors-min.js')}}"></script>
+
+<script type="text/javascript">
+$(function() {
+
+  var px_tbl = $('#pxTable').DataTable({
+    dom: 'rtp',
+    // the last bit has to be variable...
+    ajax: 'idx/px/CAC',
+    sScrollY: 300,
+    columns: [
+      {'data': 'ticker'},
+      {'data': 'px'},
+      {'data': 'ccy'}
+    ],
+    columnDefs: [
+      {
+        className: "crdr", targets: [1]
+      },
+    ]
+  });
+
+  var ws = new WebSocket("ws://localhost:9999/cac");
+
+  ws.onmessage = function(event) {
+    var data = JSON.parse(event.data);
+
+    var row = px_tbl.row('#' + data.ticker);
+
+    rwdata = row.data();
+    rwdata.px = data.px;
+    rwdata.ccy = data.ccy;
+
+    px_tbl.row('#' + data.ticker).data(rwdata).draw();
+
+    $('#' + data.ticker).css({backgroundColor: '#dfd7ca'}).animate({backgroundColor: 'white'}, 2500);
+
+    $('#sid').html("last updated: " + data.ts);
+
+  }
+
+  ws.onopen = function(evt) {
+    $('#connection_status').html('Connected');
+  }
+
+  ws.onerror = function(evt) {
+    $('#connection_status').html('Error');
+  }
+
+  ws.onclose = function(evt) {
+    $('#connection_status').html('Closed');
+  }
+
+});
+</script>
+{% endblock %}

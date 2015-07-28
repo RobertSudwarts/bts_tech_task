@@ -1,0 +1,20 @@
+<div class="collapse navbar-collapse">
+  <ul class="nav navbar-nav">
+
+    {% for item in current_menu.children recursive %}
+    <li>
+        <a href="{{ item.url }}" {% if item.active %}class="active"{% endif %}>
+          {%- if item.icon -%}<i class="fa {{item.icon}} fa-fw"></i> {% endif -%}
+          {{ item.text }}
+          {%- if item.children -%}<span class="fa arrow"></span>{% endif -%}</a>
+
+      {%- if item.children %}
+        <ul class="nav nav-second-level">
+        {{ loop(item.children) }}
+        </ul>
+      {% endif %}
+    </li>
+    {%- endfor %}
+
+  </ul>
+</div>

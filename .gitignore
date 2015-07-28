@@ -1,0 +1,17 @@
+#
+*.pyc
+*.ipynb
+./ipynb_checkpoints
+
+env/
+build/
+develop-eggs/
+downloads/
+eggs/
+.eggs/
+*.egg-info/
+*.egg
+*.log
+
+.coverage
+.coverage.*

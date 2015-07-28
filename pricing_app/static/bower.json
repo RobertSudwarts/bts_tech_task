@@ -1,0 +1,23 @@
+{
+  "name": "px_app_libs",
+  "version": "0.0.1",
+  "authors": [
+    "Robert Sudwarts <robert.sudwarts@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "DataTables": "~1.10.7",
+    "jquery": "~2.1.4",
+    "bootstrap": "~3.3.5",
+    "datatables-plugins": "~1.10.7",
+    "jquery-color-animation": "~1.6.0",
+    "metisMenu": "~2.0.3"
+  }
+}

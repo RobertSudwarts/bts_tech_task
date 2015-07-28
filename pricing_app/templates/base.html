@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="Robert Sudwarts">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="all">
+
+  <title>{%- block title %}[Title]{%- endblock -%}</title>
+
+  <link rel="canonical" href="">
+
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='bower_components/metisMenu/dist/metisMenu.min.css') }}">
+
+  {%- block header_script %}
+  {% endblock -%}
+
+<link rel="stylesheet" type="text/css" href="/static/css/main.css">
+</head>
+
+<body lang="en">
+<div id="main" class="container" role="main">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="container-fluid">
+      <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">BATS Chi-X</a>
+      </div> <!-- /.navbar-header -->
+
+      {% include 'top_nav.html' %}
+
+    </div> <!-- container-fluid -->
+  </nav>
+
+  {% block content %}
+  {% endblock %}
+</div> <!-- end container -->
+
+<script src="{{url_for('static', filename='bower_components/jquery/dist/jquery.min.js')}}"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="{{url_for('static', filename='bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+<script src="{{url_for('static', filename='bower_components/metisMenu/dist/metisMenu.min.js')}}"></script>
+{%- block tail_script %}
+{% endblock %}
+</body>
+</html>

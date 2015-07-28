@@ -1,0 +1,13 @@
+/* reduce default padding for datatables pagingation control */
+.pagination>li>a, .pagination>li>span {
+    padding: 6px 15px;
+}
+
+/* Success appears as green */
+.panel-success>.panel-heading {
+  background-image: -webkit-linear-gradient(top, #a9db80 0%, #96c56f 100%);
+  background-image: linear-gradient(to bottom, #a9db80 0%, #96c56f 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a9db80', endColorstr='#96c56f', GradientType=0);
+
+}
