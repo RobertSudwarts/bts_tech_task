@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/RobertSudwarts/bts_tech_task.svg?branch=master)](https://travis-ci.org/RobertSudwarts/bts_tech_task)
+
 # technical assignment
 
 ## precis
